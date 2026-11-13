@@ -1,0 +1,202 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfvisionproject"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"DS_SQLSERVER_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_SQLSERVER'"
+		},
+		"LS_CSV_TRIGGER_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_TRIGGER'"
+		},
+		"LS_EVENTCSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENTCSV'"
+		},
+		"LS_EVENTCSV_TRIGGER_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENTCSV_TRIGGER'"
+		},
+		"LS_EVENTPARQUET_TRIGGER_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENTPARQUET_TRIGGER'"
+		},
+		"LS_EVENT_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_PARQUET'"
+		},
+		"LS_PARQUET_TRIGGER_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_PARQUET_TRIGGER'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsbulkload.dfs.core.windows.net/"
+		},
+		"DS_SQLSERVER_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS01"
+		},
+		"DS_SQLSERVER_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2025"
+		},
+		"DS_SQLSERVER_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqluser"
+		},
+		"LS_CSV_TRIGGER_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevcsvtriggers.dfs.core.windows.net/"
+		},
+		"LS_EVENTCSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevcsvtriggers.dfs.core.windows.net/"
+		},
+		"LS_EVENTCSV_TRIGGER_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevcsvtriggers.dfs.core.windows.net/"
+		},
+		"LS_EVENTPARQUET_TRIGGER_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevparquettrigger.dfs.core.windows.net/"
+		},
+		"LS_EVENT_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevparquettrigger.dfs.core.windows.net/"
+		},
+		"LS_PARQUET_TRIGGER_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevparquettrigger.dfs.core.windows.net/"
+		},
+		"EVENTTRIGGER_CSV_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00fc1d2f-7995-4eb8-8699-6ec6bc9d9e57/resourceGroups/rgvisionproject/providers/Microsoft.Storage/storageAccounts/adlsdevcsvtriggers"
+		},
+		"EVENT_TRIGGER_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00fc1d2f-7995-4eb8-8699-6ec6bc9d9e57/resourceGroups/rgvisionproject/providers/Microsoft.Storage/storageAccounts/adlsdevcsvtriggers"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfvisionproject_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"LS_CSV_TRIGGER_accountKey": {
+						"value": "[parameters('LS_CSV_TRIGGER_accountKey')]"
+					},
+					"LS_EVENTCSV_accountKey": {
+						"value": "[parameters('LS_EVENTCSV_accountKey')]"
+					},
+					"LS_EVENTCSV_TRIGGER_accountKey": {
+						"value": "[parameters('LS_EVENTCSV_TRIGGER_accountKey')]"
+					},
+					"LS_EVENTPARQUET_TRIGGER_accountKey": {
+						"value": "[parameters('LS_EVENTPARQUET_TRIGGER_accountKey')]"
+					},
+					"LS_EVENT_PARQUET_accountKey": {
+						"value": "[parameters('LS_EVENT_PARQUET_accountKey')]"
+					},
+					"LS_PARQUET_TRIGGER_accountKey": {
+						"value": "[parameters('LS_PARQUET_TRIGGER_accountKey')]"
+					},
+					"DS_SQLSERVER_password": {
+						"value": "[parameters('DS_SQLSERVER_password')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"LS_CSV_TRIGGER_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_TRIGGER_properties_typeProperties_url')]"
+					},
+					"LS_EVENTCSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_EVENTCSV_properties_typeProperties_url')]"
+					},
+					"LS_EVENTCSV_TRIGGER_properties_typeProperties_url": {
+						"value": "[parameters('LS_EVENTCSV_TRIGGER_properties_typeProperties_url')]"
+					},
+					"LS_EVENTPARQUET_TRIGGER_properties_typeProperties_url": {
+						"value": "[parameters('LS_EVENTPARQUET_TRIGGER_properties_typeProperties_url')]"
+					},
+					"LS_EVENT_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_EVENT_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_PARQUET_TRIGGER_properties_typeProperties_url": {
+						"value": "[parameters('LS_PARQUET_TRIGGER_properties_typeProperties_url')]"
+					},
+					"EVENT_TRIGGER_properties_typeProperties_scope": {
+						"value": "[parameters('EVENT_TRIGGER_properties_typeProperties_scope')]"
+					},
+					"DS_SQLSERVER_properties_typeProperties_server": {
+						"value": "[parameters('DS_SQLSERVER_properties_typeProperties_server')]"
+					},
+					"DS_SQLSERVER_properties_typeProperties_database": {
+						"value": "[parameters('DS_SQLSERVER_properties_typeProperties_database')]"
+					},
+					"DS_SQLSERVER_properties_typeProperties_userName": {
+						"value": "[parameters('DS_SQLSERVER_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfvisionproject_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"EVENTTRIGGER_CSV_properties_typeProperties_scope": {
+						"value": "[parameters('EVENTTRIGGER_CSV_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfvisionproject_ArmTemplate_0')]"
+			]
+		}
+	]
+}
