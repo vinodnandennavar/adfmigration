@@ -1,0 +1,23 @@
+{
+	"name": "DS_EVENTCSV_TRIGGER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_EVENTCSV_TRIGGER",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "eventinputcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

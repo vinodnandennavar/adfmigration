@@ -1,0 +1,20 @@
+{
+	"name": "DS_PARQUET_TRIGGER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PARQUET_TRIGGER",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputcontainer"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

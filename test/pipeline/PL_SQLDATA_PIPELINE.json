@@ -1,0 +1,44 @@
+{
+	"name": "PL_SQLDATA_PIPELINE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "dbo.InsertCustomer",
+					"storedProcedureParameters": {
+						"CustomerId": {
+							"value": "1",
+							"type": "Int32"
+						},
+						"FirstName": {
+							"value": "Devi",
+							"type": "String"
+						},
+						"LastName": {
+							"value": "r",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DS_SQLSERVER",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-11-13T14:22:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

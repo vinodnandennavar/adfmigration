@@ -1,0 +1,17 @@
+{
+	"name": "EVENT_TRIGGER",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/eventinputcontainer/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/00fc1d2f-7995-4eb8-8699-6ec6bc9d9e57/resourceGroups/rgvisionproject/providers/Microsoft.Storage/storageAccounts/adlsdevcsvtriggers",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
